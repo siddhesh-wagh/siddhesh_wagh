@@ -3,6 +3,7 @@ import { FaCertificate } from "react-icons/fa";
 import Hero from "../components/Hero";
 import About from "../components/About"; // ✅ New import
 import Projects from "../components/projects";
+import Qualification from "../components/Qualifications";
 
 const Home = () => {
   return (
@@ -11,27 +12,7 @@ const Home = () => {
       {/* About Section */}
       <About /> {/* ✅ New component */}
       {/* Qualification Section */}
-      <section id="qualification" className="p-10 bg-white text-center mt-10">
-        <h2 className="text-3xl font-semibold text-purple-700 mb-4">
-          Qualification
-        </h2>
-        <div className="max-w-4xl mx-auto text-gray-700 space-y-4">
-          <div>
-            <h3 className="text-xl font-bold">B.E. in Computer Engineering</h3>
-            <p>Pune University – 2022</p>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold">
-              Diploma in Computer Engineering
-            </h3>
-            <p>MSBTE – 2019</p>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold">SSC</h3>
-            <p>Maharashtra State Board – 2016</p>
-          </div>
-        </div>
-      </section>
+      <Qualification />
       {/* Certificates Section */}
       <section id="certificates" className="p-10 bg-gray-100 text-center">
         <h2 className="text-3xl font-bold text-purple-700 mb-10">
@@ -62,7 +43,6 @@ const Home = () => {
         </div>
       </section>
       <Projects />
-
     </div>
   );
 };
