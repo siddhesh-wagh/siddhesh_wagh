@@ -2,6 +2,7 @@ import React from "react";
 import { FaCertificate } from "react-icons/fa";
 import Hero from "../components/Hero";
 import About from "../components/About"; // ✅ New import
+import Projects from "../components/projects";
 
 const Home = () => {
   return (
@@ -60,6 +61,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <Projects />
+
     </div>
   );
 };
