@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaExternalLinkAlt, FaCode } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 // Import images
 import projectOne from "../assets/project/project-one.png";
@@ -34,13 +35,18 @@ const projects = [
   },
 ];
 
-const Projects = () => {
+const Projects = ({ showAll = false }) => {
+  // Decide how many projects to show
+  const displayedProjects = showAll ? projects : projects.slice(0, 3);
+
   return (
     <section id="projects" className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold text-purple-700 mb-10">Projects</h2>
+
+        {/* Project Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {displayedProjects.map((project, index) => (
             <motion.div
               key={index}
               className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
@@ -56,6 +62,8 @@ const Projects = () => {
                   {project.title}
                 </h3>
                 <p className="mt-2 text-gray-600">{project.description}</p>
+
+                {/* Tech Stack Tags */}
                 <div className="mt-4 flex flex-wrap gap-2 justify-center">
                   {project.tech.map((tech, i) => (
                     <span
@@ -66,6 +74,8 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
+
+                {/* Links */}
                 <div className="mt-6 flex justify-center gap-4">
                   <a
                     href={project.liveLink}
@@ -88,6 +98,18 @@ const Projects = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* "View More Projects" Button - Only on Home Page */}
+        {!showAll && (
+          <div className="mt-10">
+            <Link
+              to="/projects"
+              className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition"
+            >
+              View More Projects
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
