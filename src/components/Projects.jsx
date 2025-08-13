@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { FaExternalLinkAlt, FaCode } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-// Import images
 import projectOne from "../assets/project/project-one.png";
 import projectTwo from "../assets/project/project-two.png";
 import projectThree from "../assets/project/project-three.png";
@@ -36,34 +35,45 @@ const projects = [
 ];
 
 const Projects = ({ showAll = false }) => {
-  // Decide how many projects to show
   const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
     <section id="projects" className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold text-purple-700 mb-10">Projects</h2>
+        <h2 className="text-4xl font-bold text-purple-700 mb-14">Projects</h2>
 
-        {/* Project Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Staggered Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {displayedProjects.map((project, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
-              whileHover={{ scale: 1.03 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              whileHover={{ scale: 1.03, y: -5 }}
+              className={`bg-white rounded-2xl shadow-lg overflow-hidden border border-purple-100 transition duration-300 hover:shadow-2xl flex flex-col
+                ${index % 2 === 1 ? "md:translate-y-6" : ""}
+                ${index % 3 === 2 ? "md:-translate-y-6" : ""}
+              `}
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold text-gray-800">
-                  {project.title}
-                </h3>
-                <p className="mt-2 text-gray-600">{project.description}</p>
+              {/* Image with zoom effect */}
+              <div className="overflow-hidden">
+                <motion.img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-56 object-cover"
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ duration: 0.4 }}
+                />
+              </div>
 
-                {/* Tech Stack Tags */}
+              {/* Content */}
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-2xl font-semibold text-gray-800">{project.title}</h3>
+                <p className="mt-3 text-gray-600 flex-1">{project.description}</p>
+
+                {/* Tech tags */}
                 <div className="mt-4 flex flex-wrap gap-2 justify-center">
                   {project.tech.map((tech, i) => (
                     <span
@@ -99,9 +109,9 @@ const Projects = ({ showAll = false }) => {
           ))}
         </div>
 
-        {/* "View More Projects" Button - Only on Home Page */}
+        {/* View More Button */}
         {!showAll && (
-          <div className="mt-10">
+          <div className="mt-14">
             <Link
               to="/projects"
               className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition"
