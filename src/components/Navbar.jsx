@@ -1,20 +1,25 @@
 import React from "react";
+import { FaMoon } from "react-icons/fa";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+    <nav className="fixed top-0 left-0 w-full bg-gray-50 shadow-md z-50">
       <div className="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <h1 className="text-2xl font-bold text-purple-700 tracking-wide">
-          Siddhesh
-        </h1>
+        
+        {/* Moon Icon on the left */}
+        <button
+          className="text-gray-700 text-xl hover:text-gray-900 transition-colors duration-200"
+          aria-label="Toggle dark mode"
+        >
+          <FaMoon />
+        </button>
 
-        {/* Navigation Links */}
-        <ul className="flex space-x-8 text-gray-700 font-medium">
+        {/* Navigation Links on the right */}
+        <ul className="flex space-x-8 text-gray-800 font-medium">
           <li>
             <a
               href="#about"
-              className="hover:text-purple-600 transition-colors duration-300"
+              className="hover:text-gray-600 transition-colors duration-200"
             >
               About
             </a>
@@ -22,7 +27,7 @@ const Navbar = () => {
           <li>
             <a
               href="#qualification"
-              className="hover:text-purple-600 transition-colors duration-300"
+              className="hover:text-gray-600 transition-colors duration-200"
             >
               Qualification
             </a>
@@ -30,7 +35,7 @@ const Navbar = () => {
           <li>
             <a
               href="#certificates"
-              className="hover:text-purple-600 transition-colors duration-300"
+              className="hover:text-gray-600 transition-colors duration-200"
             >
               Certificates
             </a>
@@ -38,7 +43,7 @@ const Navbar = () => {
           <li>
             <a
               href="#internships"
-              className="hover:text-purple-600 transition-colors duration-300"
+              className="hover:text-gray-600 transition-colors duration-200"
             >
               Internships
             </a>
@@ -46,7 +51,7 @@ const Navbar = () => {
           <li>
             <a
               href="#contact"
-              className="hover:text-purple-600 transition-colors duration-300"
+              className="hover:text-gray-600 transition-colors duration-200"
             >
               Contact
             </a>
@@ -54,7 +59,7 @@ const Navbar = () => {
           <li>
             <a
               href="/projects"
-              className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors duration-300"
+              className="text-gray-900 hover:text-gray-600 transition-colors duration-200"
             >
               Projects
             </a>
